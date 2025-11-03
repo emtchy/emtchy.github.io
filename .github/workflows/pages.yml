@@ -9,32 +9,44 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
 
-      - run: corepack enable
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
+      # Install & activate pnpm properly via Corepack
+      - name: Enable pnpm via Corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.0.0 --activate
+          pnpm --version
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      # GitHub Pages soll nicht Jekyll nutzen:
-      - run: touch dist/.nojekyll
-      # Custom Domain in den Build legen (unabhängig davon, ob du /public nutzt):
-      - run: echo "www.emilygombocz.com" > dist/CNAME
+      - name: Build Astro site
+        run: pnpm build
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Prepare GitHub Pages artifact
+        run: |
+          touch dist/.nojekyll
+          echo "www.emilygombocz.com" > dist/CNAME
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -44,5 +56,5 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
