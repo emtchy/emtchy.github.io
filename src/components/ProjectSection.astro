@@ -1,0 +1,98 @@
+---
+const {
+    eyebrow,
+    title,
+    description,
+    ctaText = "Learn more",
+    ctaHref,
+    variant = "light",
+    align = "left",
+    gradient = "from-zinc-200 via-zinc-300 to-zinc-400",
+    accent,
+    initial,
+    image,
+    imageAlt = "",
+    imageFit = "cover",
+} = Astro.props;
+
+const bgClass = variant === "alt" ? "bg-surface-alt" : "bg-surface";
+const visualOrder = align === "right" ? "md:order-2" : "md:order-1";
+const textOrder = align === "right" ? "md:order-1" : "md:order-2";
+---
+
+<section class={`${bgClass} w-full`}>
+    <div
+        class="mx-auto grid max-w-[1100px] gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:py-32 items-center"
+    >
+        <div class={`${visualOrder}`} data-reveal>
+            <div
+                data-parallax="0.06"
+                class={`relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)] ${image ? "bg-surface-alt" : `bg-gradient-to-br ${gradient}`}`}
+            >
+                {image && (
+                    <img
+                        src={image}
+                        alt={imageAlt}
+                        class={`absolute inset-0 h-full w-full ${imageFit === "contain" ? "object-contain p-4" : "object-cover object-top"}`}
+                        loading="lazy"
+                    />
+                )}
+                {!image && initial && (
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span
+                            class="text-[12rem] font-bold tracking-tightish text-white/90 select-none"
+                            style="text-shadow: 0 4px 40px rgba(0,0,0,0.15);"
+                        >
+                            {initial}
+                        </span>
+                    </div>
+                )}
+                <slot name="visual" />
+            </div>
+        </div>
+
+        <div class={`${textOrder}`} data-reveal data-reveal-delay="1">
+            {
+                eyebrow && (
+                    <div
+                        class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted"
+                        style={accent ? `color: ${accent}` : undefined}
+                    >
+                        {eyebrow}
+                    </div>
+                )
+            }
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tightish text-ink leading-[1.05]">
+                {title}
+            </h2>
+            <p class="mt-6 text-lg text-ink-muted leading-relaxed max-w-prose">
+                {description}
+            </p>
+            {
+                ctaHref && (
+                    <a
+                        href={ctaHref}
+                        target="_blank"
+                        rel="noopener"
+                        class="mt-8 inline-flex items-center gap-1 text-base font-medium text-accent hover:gap-2 transition-all"
+                    >
+                        {ctaText}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</section>

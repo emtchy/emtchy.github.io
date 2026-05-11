@@ -1,191 +1,270 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+
+const skills = [
+    {
+        group: "Programming",
+        items: [
+            "C",
+            "C++",
+            "Java",
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "SystemVerilog",
+            "RISC-V",
+            "Inline Assembly",
+        ],
+    },
+    {
+        group: "Frameworks & Tools",
+        items: [
+            "Astro",
+            "Spring Boot",
+            "Django",
+            "Tailwind",
+            "Git / GitHub",
+            "GitLab",
+            "Agile & Scrum",
+        ],
+    },
+    {
+        group: "Design",
+        items: ["Figma", "Affinity Designer"],
+    },
+    {
+        group: "Operating Systems",
+        items: ["Linux / Unix", "macOS", "Windows"],
+    },
+    {
+        group: "Languages",
+        items: ["German (native)", "English (C1)"],
+    },
+];
+
+const coursework = [
+    {
+        title: "Operating Systems",
+        body: "Built a simplified OS in C++ — user-space mutexes, thread management, shared memory, process handling.",
+    },
+    {
+        title: "Object Oriented Programming 2",
+        body: "OpenStreetMap-based application in Java + Spring Boot, focused on clean architecture and OO design.",
+    },
+    {
+        title: "Agile Software Development & Project Management",
+        body: "Team-based Scrum projects in Java and Angular — sprint planning, collaboration, and agile workflows.",
+    },
+    {
+        title: "Senior Software Development",
+        body: "Full-stack Django project; design patterns, testing strategy, and team leadership.",
+    },
+];
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
-  </div>
+<BaseLayout title="Resume" activeNav="cv" fullBleed={true}>
+    <!-- HEADER -->
+    <section class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 pt-20 pb-12">
+            <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Curriculum Vitae
+            </div>
+            <h1 data-reveal data-reveal-delay="1" class="text-5xl md:text-6xl font-bold tracking-tightish leading-[1.05] text-ink">
+                Emily Gombocz.
+            </h1>
+            <p data-reveal data-reveal-delay="2" class="mt-6 max-w-2xl text-lg text-ink-muted leading-relaxed">
+                Software Engineering and Management student at TU Graz,
+                drawn to projects where careful engineering and
+                considered design meet. I started at university level
+                while still in secondary school, and have been chasing
+                problems that reward both rigor and taste ever since.
+            </p>
+            <div data-reveal data-reveal-delay="3" class="mt-8 flex gap-3 flex-wrap">
+                <a
+                    href="/emily-gombocz-cv.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-surface hover:opacity-85 transition-opacity"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                    </svg>
+                    Download CV (PDF)
+                </a>
+                <a
+                    href="mailto:emily@gombocz.com"
+                    class="inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
+                >
+                    Get in touch
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <div class="mb-10 text-justify">
-    I’m a Software Engineering student at TU Graz with a passion for building things that make a real impact.
-    My journey started early — I gained university-level experience while still in secondary school, and since then,
-    I’ve stayed driven by curiosity and challenge.<br>
-    <br>
-    Along the way, I’ve been recognized for academic excellence, graduating early with honours from high school and earning places in
-    several scholarship programs. Beyond tech, I’ve learned a lot from working in banking, customer service, and athletics —
-    experiences that taught me how to adapt quickly, stay focused, and balance multiple commitments without losing sight of quality.
-  </div>
+    <!-- EDUCATION -->
+    <section class="bg-surface-alt w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Education
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                Where I've studied.
+            </h2>
+            <div data-reveal data-reveal-delay="2" class="max-w-3xl">
+                <TimeLineElement
+                    title="Bachelor's Degree, Software Engineering and Management"
+                    subtitle="2023 — present · Graz University of Technology, Austria"
+                />
+                <TimeLineElement
+                    title="Exchange Semester"
+                    subtitle="2025 · Rhodes College, Memphis, TN, U.S."
+                />
+                <TimeLineElement
+                    title="Middle School & High School"
+                    subtitle="2015 — 2023 · MS BG BRG Klusemannstrasse, Graz, Austria"
+                />
+            </div>
+        </div>
+    </section>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
+    <!-- EXPERIENCE -->
+    <section class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Experience
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                Where I've worked.
+            </h2>
+            <div data-reveal data-reveal-delay="2" class="max-w-3xl">
+                <TimeLineElement
+                    title="Student Teaching Assistant"
+                    subtitle="Oct 2024 — Jun 2025 · TU Graz"
+                >
+                    Mentored undergraduates in Introduction to Structured Programming and Project Management in Software Development — grading, tutorials, and one-on-one guidance.
+                </TimeLineElement>
+                <TimeLineElement
+                    title="Data Quality Management"
+                    subtitle="Feb 2024 — Aug 2024 · Raiffeisenbank Kalsdorf-Lieboch-Stainz"
+                >
+                    Maintained customer data and supported data-quality work for a regional bank, including upkeep of Lotus Notes databases.
+                </TimeLineElement>
+                <TimeLineElement
+                    title="Reception Employee"
+                    subtitle="Aug 2023 — Dec 2023 · FlibLab Center West, Graz"
+                >
+                    Ran front-desk operations at a children's entertainment facility — bookings, payments, and customer inquiries.
+                </TimeLineElement>
+                <TimeLineElement
+                    title="Intern · Raiffeisenbank"
+                    subtitle="July 2023 · Kalsdorf-Lieboch-Stainz, Austria"
+                >
+                    Supported marketing initiatives and back-office operations during a summer internship.
+                </TimeLineElement>
+            </div>
+        </div>
+    </section>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Bachelor's Degree Software Engineering and Management"
-      subtitle="2023 to now at Graz University of Technology, Styria, Austria"
-    />
-    <TimeLineElement
-      title="Exchange Semester"
-      subtitle="2025 at Rhodes College, Memphis, TN, U.S."
-    />
-    <TimeLineElement
-        title="Auditor at University different courses during school"
-        subtitle="2022 to 2023 at Graz University of Technology"
-    />
-    <TimeLineElement
-        title="Middle School & High School"
-        subtitle="2015 to 2023 at MS BG BRG Klusemannstrasse, Graz, Styria, Austria"
-    />
-    <TimeLineElement
-        title="Primary School"
-        subtitle="2011 to 2015 at Volksschule Stainz, Stainz, Stryia, Austria"
-    />
-  </div>
+    <!-- COURSEWORK -->
+    <section class="bg-surface-alt w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Coursework
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                A few favourites.
+            </h2>
+            <div data-reveal data-reveal-delay="2" class="grid gap-x-10 gap-y-6 md:grid-cols-2 max-w-4xl">
+                {
+                    coursework.map((c) => (
+                        <div>
+                            <h3 class="text-base font-semibold text-ink">
+                                {c.title}
+                            </h3>
+                            <p class="mt-1 text-[15px] text-ink-muted leading-relaxed">
+                                {c.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
+    <!-- ACHIEVEMENTS -->
+    <section class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Recognition
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                Scholarships & honours.
+            </h2>
+            <ul data-reveal data-reveal-delay="2" class="grid gap-3 max-w-3xl text-[15px] text-ink-muted leading-relaxed">
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>TU Graz 100 merit scholarship · 2023</span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>CSBME faculty scholarship for academic excellence · 2023/24</span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>AVL List scholarship for studying abroad · 2025</span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>Dean's List — top 10% of first-year Software Engineering &amp; Management · 2023/24</span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>Dean's List — top 5% of second-year Software Engineering &amp; Management · 2024/25</span>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Student Teaching Assistant"
-      subtitle="From October 2024 to June 2025 at Graz University of Technology, Graz, Styria, Austria"
-    >
-      Assisted in teaching and mentoring undergraduate students in Introduction to Structured Programming and Project
-      Management in Software Development. Responsibilities included grading assignments, preparing and delivering tutorials,
-      and providing guidance during programming exercises.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Data Quality Management"
-      subtitle="From February 2024 to August 2024 at Raiffeisenbank Kalsdorf-Lieboch-Stainz, Lieboch, Styria, Austria"
-    >
-      The job included maintenance of customer data in the banking sector, support in data quality management and maintenance of
-       Lotus Notes databases.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Reception Employee"
-      subtitle="From August 2023 to December 2023 at FlibLab Center West, Graz, Styria, Austria"
-    >
-      Handled front-desk operations in a children’s entertainment facility, including managing bookings, payments, and
-      customer inquiries. Developed strong communication and multitasking skills in a fast-paced, customer-facing environment.
-    </TimeLineElement>
-    <TimeLineElement
-        title="Intern at Raiffeisenbank Kalsdorf-Lieboch-Stainz"
-        subtitle="In July 2023 at Raiffeisenbank Kalsdorf-Lieboch-Stainz, Lieboch, Styria, Austria"
-    >
-      Gained first-hand experience in the banking sector through supporting marketing initiatives and assisting in
-      back-office operations.
-    </TimeLineElement>
-  </div>
+    <!-- SKILLS -->
+    <section class="bg-surface-alt w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Skills
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                Tools of the trade.
+            </h2>
+            <div data-reveal data-reveal-delay="2" class="grid gap-10 max-w-4xl">
+                {
+                    skills.map((group) => (
+                        <div>
+                            <div class="text-sm font-medium uppercase tracking-[0.08em] text-ink-muted mb-3">
+                                {group.group}
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                {group.items.map((item) => (
+                                    <span class="rounded-full border border-ink/10 bg-surface px-3.5 py-1.5 text-sm text-ink">
+                                        {item}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Relevant Coursework at Universities</div>
-  </div> <div class="time-line-container mb-10">
-  <TimeLineElement
-      title="Operating Systems"
-      subtitle="Developed a simplified operating system in C++, implementing low-level components such as user-space mutexes, thread management, shared memory, and process handling."
-  />
-  <TimeLineElement
-      title="Object Oriented Programming 2"
-      subtitle="Built an OpenStreetMap-based application using Java and Spring Boot, focusing on object-oriented design principles and clean architecture."
-  />
-  <TimeLineElement
-      title="Agile Software Development & Project Management in Software Development"
-      subtitle="Applied Scrum in team-based projects using Java and Angular, gaining hands-on experience in agile workflows, sprint planning, and collaboration tools."
-  />
-  <TimeLineElement
-      title="Senior Software Development"
-      subtitle="Led a full-stack team project using Django, applying design patterns and implementing effective testing strategies."
-  />
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Academic Achievements</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>Recipient of the merit-based TU Graz 100 scholarship program 2023</li>
-    <li>Recipient of the merit-based CSBME faculty scholarship 2023/24 for academic excellence</li>
-    <li>Recipient of the merit-based AVL List scholarship for studying abroad in 2025</li>
-    <li>Dean's list: Top 10% of 1st year students in Software Engineering & Management 2023/24</li>
-    <li>Dean's list: Top 5% of 2nd year students in Software Engineering & Management 2024/25</li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Projects</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="https://github.com/emtchy/obsidian-to-do-plugin" target="_blank"> Obsidian Plugin (Link to Repository)</a>
-    </li>
-    <!--<li>
-      <a href="https://github.com/emtchy/emtchy.github.io" target="_blank"> Personal Website (Link to Repository)</a>
-    </li>-->
-    <li>
-      <a href="https://github.com/emtchy/logo-sest" target="_blank">Logo Design for S&lt;st (Link to Repository)</a>
-    </li>
-
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-    <ul class="list-none p-0 md:columns-5 columns-2 gap-6 [&_li]:break-inside-avoid">
-
-      <li class="mb-5">
-        <span class="text-l font-bold block mb-1">Frameworks &amp; Tools</span>
-        <ul class="list-disc pl-5">
-          <li>GitHub</li>
-          <li>GitLab</li>
-          <li>Agile & Scrum</li>
-          <li>Astro</li>
-          <li>Spring Boot</li>
-          <li>Django</li>
-        </ul>
-      </li>
-
-      <li class="mb-5">
-        <span class="text-l font-bold block mb-1">Programming Languages</span>
-        <ul class="list-disc pl-5">
-          <li>C</li>
-          <li>C++</li>
-          <li>Java</li>
-          <li>Python</li>
-          <li>SystemVerilog</li>
-          <li>JavaScript</li>
-          <li>TypeScript</li>
-          <li>RISC-V</li>
-          <li>Inline Assembly</li>
-        </ul>
-      </li>
-
-      <li class="mb-5">
-        <span class="text-l font-bold block mb-1">OS &amp; Office Tools</span>
-        <ul class="list-disc pl-5">
-          <li>Linux / Unix</li>
-          <li>Windows</li>
-          <li>macOS</li>
-        </ul>
-      </li>
-
-      <li class="mb-5">
-        <span class="text-l font-bold block mb-1">Design</span>
-        <ul class="list-disc pl-5">
-          <li>Figma</li>
-          <li>Affinity Designer</li>
-        </ul>
-      </li>
-
-      <li class="mb-5">
-        <span class="text-l font-bold block mb-1">Languages</span>
-        <ul class="list-disc pl-5">
-          <li>German (native)</li>
-          <li>English (CEFR C1)</li>
-        </ul>
-      </li>
-    </ul>
+    <!-- FOOTER LINK -->
+    <section class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-16 text-center">
+            <p data-reveal class="text-ink-muted text-[15px]">
+                Want the rest? See
+                <a href="/" class="text-accent hover:underline">the work</a>
+                or
+                <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">say hello</a>.
+            </p>
+        </div>
+    </section>
 </BaseLayout>

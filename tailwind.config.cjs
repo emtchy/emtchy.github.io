@@ -2,12 +2,57 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: [
+					'Inter var',
+					'Inter',
+					'ui-sans-serif',
+					'system-ui',
+					'-apple-system',
+					'"SF Pro Text"',
+					'"Segoe UI"',
+					'Roboto',
+					'sans-serif',
+				],
+			},
+			colors: {
+				surface: '#fbfbfd',
+				'surface-alt': '#f5f5f7',
+				ink: '#1d1d1f',
+				'ink-muted': '#6e6e73',
+				accent: '#0071e3',
+			},
+			letterSpacing: {
+				tightish: '-0.022em',
+			},
+		},
 	},
-	plugins: [require("@tailwindcss/typography"),require("daisyui")],
+	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	daisyui: {
-		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dark", // name of one of the included themes for dark mode
-		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
-	  }
-}
+		themes: [
+			{
+				emily: {
+					primary: '#1d1d1f',
+					'primary-content': '#fbfbfd',
+					secondary: '#0071e3',
+					'secondary-content': '#fbfbfd',
+					accent: '#0071e3',
+					'accent-content': '#fbfbfd',
+					neutral: '#1d1d1f',
+					'neutral-content': '#fbfbfd',
+					'base-100': '#fbfbfd',
+					'base-200': '#f5f5f7',
+					'base-300': '#ebebef',
+					'base-content': '#1d1d1f',
+					info: '#0071e3',
+					success: '#34c759',
+					warning: '#ff9f0a',
+					error: '#ff3b30',
+				},
+			},
+		],
+		darkTheme: 'emily',
+		logs: false,
+	},
+};

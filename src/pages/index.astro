@@ -1,51 +1,200 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
-
+import ProjectSection from "../components/ProjectSection.astro";
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-5xl font-bold">Emily Gombocz</div>
-    <div class="text-3xl py-3 font-bold">Software Engineering and Management Undergraduate Student & AI Enthusiast</div>
-    <div class="py-2"> Hi, I'm Emily - a Sofware Engineering and Management student at Graz University of Technology.
-      From designing interfaces to writing code, I’m always looking for ways to connect logic and creativity.
-      <text class="text-lg">
+<BaseLayout activeNav="work" fullBleed={true}>
+    <!-- HERO -->
+    <section class="relative min-h-[88vh] flex items-center">
+        <div class="mx-auto max-w-[1100px] px-6 w-full">
+            <div class="mb-6 text-sm font-medium uppercase tracking-[0.18em] text-ink-muted">
+                Software Engineer · TU Graz
+            </div>
+            <h1 class="text-[clamp(3rem,9vw,8rem)] font-bold tracking-tightish leading-[0.95] text-ink">
+                Emily<br />Gombocz.
+            </h1>
+            <p class="mt-10 max-w-2xl text-xl md:text-2xl text-ink-muted leading-snug">
+                Connecting logic and creativity — from low-level systems
+                to thoughtful interfaces.
+            </p>
+            <div class="mt-12 flex gap-4">
+                <a
+                    href="#work"
+                    class="rounded-full bg-ink px-6 py-3 text-sm font-medium text-surface hover:opacity-85 transition-opacity"
+                >
+                    See my work
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/emily-gombocz-1b28b5332/"
+                    target="_blank"
+                    rel="noopener"
+                    class="rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
+                >
+                    Let's connect
+                </a>
+            </div>
+        </div>
 
-      </text>
-    </div>
-    <div class="mt-8">
-      <a class="btn" href="https://www.linkedin.com/in/emily-gombocz-1b28b5332/" target="_blank"> Let's connect!</a>
-      <!--<a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>-->
-    </div>
-  </div>
+        <a
+            href="#about"
+            aria-label="Scroll down"
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 text-ink-muted hover:text-ink transition-colors"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+        </a>
+    </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
+    <!-- ABOUT -->
+    <section id="about" class="bg-surface-alt w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-32">
+            <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                About
+            </div>
+            <p data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-medium tracking-tightish leading-[1.2] text-ink max-w-4xl">
+                I'm a Software Engineering and Management student at
+                Graz University of Technology, drawn to the spaces
+                where careful engineering meets considered design.
+            </p>
+            <p data-reveal data-reveal-delay="2" class="mt-8 text-lg text-ink-muted leading-relaxed max-w-3xl">
+                I started at university level while still in secondary
+                school, and I've spent the years since chasing the
+                kind of problems that reward both rigor and taste —
+                from operating-system internals to plugin interfaces
+                to a semester abroad in Memphis.
+            </p>
+        </div>
+    </section>
 
-  <HorizontalCard
-    title="Obsidian Plugin"
-    img="/post_img.webp"
-    desc="An Obsidian plugin that automatically generates structured to-do notes at regular intervals (daily, weekly, every n days, or manually on click). It also carries over unfinished tasks from the previous note and archives the old file — keeping your task management tidy and consistent."
-    url="https://github.com/emtchy/obsidian-to-do-plugin"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-      title="Logo Design for S<st"
-      img="/post_img.webp"
-      desc="Designed a custom logo for S<st, including concept development and final artwork delivery."
-      url="https://github.com/emtchy/logo-sest"
-  />
-  <!--<div class="divider my-0"></div>
-  <HorizontalCard
-    title="Personal Website"
-    img="/post_img.webp"
-    desc="A personal website to view CV, projects and to contact me. The website was created using Astro (templates)."
-    url="https://github.com/emtchy/emtchy.github.io"
-  />-->
+    <!-- PROJECTS -->
+    <div id="work"></div>
+
+    <ProjectSection
+        eyebrow="Web App · Live"
+        title="A flashcard tool I actually wanted to use."
+        description="A focused study app built around how I revise — quick deck creation, audio input for hands-free studying, distraction-free review, and the bits I kept missing in other tools. Designed, built, and deployed end-to-end."
+        ctaText="Try it"
+        ctaHref="https://flashcard-tool.pages.dev"
+        variant="light"
+        align="left"
+        image="/flashcard-tool_landingpage.png"
+        imageAlt="Landing page of the flashcard tool"
+    />
+
+    <ProjectSection
+        eyebrow="Identity · S<st"
+        title="A logo built from concept to final mark."
+        description="Designed a custom logotype for S<st, taking the work from early concept exploration through to final delivery. A study in how a single mark can hold a whole identity."
+        ctaText="See the work"
+        ctaHref="https://github.com/emtchy/logo-sest"
+        variant="alt"
+        align="right"
+        gradient="from-zinc-700 via-zinc-800 to-black"
+        initial="S"
+    />
+
+    <ProjectSection
+        eyebrow="Personal Site · You're on it"
+        title="The site you're reading."
+        description="Started from the Astrofy template, then reshaped piece by piece — type, motion, layout, color — into something that felt like mine. Built with Astro and Tailwind."
+        ctaText="View source"
+        ctaHref="https://github.com/emtchy/emtchy.github.io"
+        variant="light"
+        align="left"
+        gradient="from-amber-300 via-orange-400 to-rose-500"
+        initial="</>"
+    />
+
+    <ProjectSection
+        eyebrow="Plugin · Obsidian"
+        title="A to-do system that carries itself forward."
+        description="An Obsidian plugin that automatically generates structured to-do notes at chosen intervals — daily, weekly, every n days, or on demand. It carries unfinished tasks forward and archives the old file, so task management stays tidy without manual upkeep."
+        ctaText="View on GitHub"
+        ctaHref="https://github.com/emtchy/obsidian-to-do-plugin"
+        variant="alt"
+        align="right"
+        gradient="from-violet-400 via-violet-500 to-indigo-600"
+        initial="✓"
+    />
+
+    <!-- CV SNAPSHOT (placeholder — refined in step 4) -->
+    <section id="cv-snapshot" class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-32">
+            <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                The short version
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-4xl md:text-5xl font-bold tracking-tightish leading-[1.05] text-ink max-w-3xl">
+                A few numbers that hint at the rest.
+            </h2>
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div data-reveal>
+                    <div class="text-5xl font-bold tracking-tightish text-ink">3<span class="text-ink-muted">rd</span></div>
+                    <div class="mt-2 text-sm text-ink-muted">year SWE & Management</div>
+                </div>
+                <div data-reveal data-reveal-delay="1">
+                    <div class="text-5xl font-bold tracking-tightish text-ink">×2</div>
+                    <div class="mt-2 text-sm text-ink-muted">Dean's List standings</div>
+                </div>
+                <div data-reveal data-reveal-delay="2">
+                    <div class="text-5xl font-bold tracking-tightish text-ink">3</div>
+                    <div class="mt-2 text-sm text-ink-muted">merit scholarships</div>
+                </div>
+                <div data-reveal data-reveal-delay="3">
+                    <div class="text-5xl font-bold tracking-tightish text-ink">1</div>
+                    <div class="mt-2 text-sm text-ink-muted">semester in Memphis, TN</div>
+                </div>
+            </div>
+            <a
+                data-reveal
+                href="/cv"
+                class="mt-16 inline-flex items-center gap-1 text-base font-medium text-accent hover:gap-2 transition-all"
+            >
+                Read the full CV
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="bg-surface-alt w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-32 text-center">
+            <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                Contact
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-5xl md:text-7xl font-bold tracking-tightish leading-[1.05] text-ink">
+                Let's build something.
+            </h2>
+            <p data-reveal data-reveal-delay="2" class="mt-8 mx-auto max-w-xl text-lg text-ink-muted leading-relaxed">
+                For roles, collaborations, or a coffee in Graz —
+                I'd love to hear from you.
+            </p>
+            <div data-reveal data-reveal-delay="3" class="mt-12 flex justify-center gap-4 flex-wrap">
+                <a
+                    href="mailto:emily@gombocz.com"
+                    class="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-surface hover:opacity-85 transition-opacity"
+                >
+                    emily@gombocz.com
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/emily-gombocz-1b28b5332/"
+                    target="_blank"
+                    rel="noopener"
+                    class="rounded-full border border-ink/15 px-7 py-3.5 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
+                >
+                    LinkedIn
+                </a>
+                <a
+                    href="https://github.com/emtchy"
+                    target="_blank"
+                    rel="noopener"
+                    class="rounded-full border border-ink/15 px-7 py-3.5 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
+                >
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
 </BaseLayout>

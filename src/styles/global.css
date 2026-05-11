@@ -1,3 +1,73 @@
-.time-line-container>div:last-child .education__time>.education__line {
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+    --surface: #fbfbfd;
+    --surface-alt: #f5f5f7;
+    --ink: #1d1d1f;
+    --ink-muted: #6e6e73;
+    --accent: #0071e3;
+    --nav-h: 56px;
+}
+
+html {
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "SF Pro Text",
+        "Segoe UI", Roboto, sans-serif;
+    background-color: var(--surface);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system,
+            "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    }
+}
+
+body {
+    background-color: var(--surface);
+    color: var(--ink);
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: -0.022em;
+}
+
+/* Reveal-on-scroll — only hidden once JS confirms it's ready. */
+body.js-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+}
+[data-reveal] {
+    transition:
+        opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal][data-reveal-delay="1"] {
+    transition-delay: 60ms;
+}
+[data-reveal][data-reveal-delay="2"] {
+    transition-delay: 120ms;
+}
+[data-reveal][data-reveal-delay="3"] {
+    transition-delay: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.js-ready [data-reveal]:not(.is-visible) {
+        opacity: 1;
+        transform: none;
+    }
+    [data-reveal] {
+        transition: none;
+    }
+    [data-parallax] {
+        transform: none !important;
+    }
+}
+
+.time-line-container > div:last-child .education__time > .education__line {
     display: none;
 }

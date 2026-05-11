@@ -1,0 +1,69 @@
+---
+const { activeNav } = Astro.props;
+
+const links = [
+    { id: "work", label: "Work", href: "/#work" },
+    { id: "cv", label: "CV", href: "/cv" },
+    { id: "contact", label: "Contact", href: "mailto:emily@gombocz.com" },
+];
+---
+
+<header
+    id="topnav"
+    class="fixed inset-x-0 top-0 z-50 transition-colors duration-200"
+>
+    <div
+        class="mx-auto flex h-[var(--nav-h)] max-w-[1100px] items-center justify-between px-6 text-[15px]"
+    >
+        <a
+            href="/"
+            class="font-semibold tracking-tightish text-ink hover:opacity-70 transition-opacity"
+        >
+            Emily Gombocz
+        </a>
+
+        <nav class="flex items-center gap-7">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        data-nav-id={link.id}
+                        class:list={[
+                            "transition-opacity hover:opacity-70",
+                            activeNav === link.id
+                                ? "text-ink font-medium"
+                                : "text-ink-muted",
+                        ]}
+                    >
+                        {link.label}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+</header>
+
+<script>
+    const nav = document.getElementById("topnav");
+    if (nav) {
+        const update = () => {
+            if (window.scrollY > 8) {
+                nav.classList.add(
+                    "bg-surface/70",
+                    "backdrop-blur-xl",
+                    "border-b",
+                    "border-black/5",
+                );
+            } else {
+                nav.classList.remove(
+                    "bg-surface/70",
+                    "backdrop-blur-xl",
+                    "border-b",
+                    "border-black/5",
+                );
+            }
+        };
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+    }
+</script>
