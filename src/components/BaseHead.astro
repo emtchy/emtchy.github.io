@@ -37,3 +37,17 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Language: read localStorage and set <html data-lang> before body renders. -->
+<script is:inline>
+    (() => {
+        try {
+            const stored = localStorage.getItem("lang");
+            const lang = stored === "de" ? "de" : "en";
+            document.documentElement.setAttribute("data-lang", lang);
+            document.documentElement.setAttribute("lang", lang);
+        } catch {
+            document.documentElement.setAttribute("data-lang", "en");
+        }
+    })();
+</script>

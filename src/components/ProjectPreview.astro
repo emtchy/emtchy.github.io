@@ -1,0 +1,136 @@
+---
+const {
+    previewId,
+    title,
+    eyebrow,
+    description,
+    githubHref,
+    githubLabel = { en: "View on GitHub", de: "Auf GitHub ansehen" },
+    liveHref,
+    liveLabel = { en: "Try it", de: "Ausprobieren" },
+    mockupImage,
+    mockupAlt = "",
+    mockupBgClass = "bg-stone-100",
+    mockupGradient,
+    mockupInitial,
+} = Astro.props;
+
+const t = (v: any) => ({
+    en: typeof v === "string" ? v : v?.en,
+    de: typeof v === "string" ? v : v?.de ?? v?.en,
+});
+const titleT = t(title);
+const eyebrowT = eyebrow ? t(eyebrow) : null;
+const descriptionT = description ? t(description) : null;
+const liveLabelT = t(liveLabel);
+const githubLabelT = t(githubLabel);
+
+const hasPlaceholder = Boolean(mockupGradient || mockupInitial);
+const hasMockup = Boolean(mockupImage) || hasPlaceholder;
+const hasActions = Boolean(liveHref || githubHref);
+---
+
+<div
+    class="project-preview absolute inset-0 z-20 flex items-center justify-center px-2 md:px-6"
+    data-preview={previewId}
+    aria-hidden="true"
+>
+    <div
+        class:list={[
+            "project-preview-card relative w-full grid gap-0 rounded-[1.75rem] overflow-hidden bg-white shadow-[0_40px_100px_-30px_rgba(0,0,0,0.35)] ring-1 ring-black/5",
+            hasMockup
+                ? "max-w-[900px] grid-cols-1 md:grid-cols-5"
+                : "max-w-[560px] grid-cols-1",
+        ]}
+    >
+        {hasMockup && (
+            <div
+                class:list={[
+                    "md:col-span-3 relative min-h-[220px] md:min-h-[420px] overflow-hidden",
+                    mockupGradient
+                        ? `bg-gradient-to-br ${mockupGradient}`
+                        : mockupBgClass,
+                ]}
+            >
+                {mockupImage ? (
+                    <img
+                        src={mockupImage}
+                        alt={mockupAlt}
+                        class="absolute inset-0 h-full w-full object-contain p-6 md:p-10"
+                        loading="lazy"
+                    />
+                ) : mockupInitial ? (
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span
+                            class="text-[8rem] md:text-[10rem] font-bold tracking-tightish text-white/85 select-none"
+                            style="text-shadow: 0 4px 60px rgba(0,0,0,0.18);"
+                        >
+                            {mockupInitial}
+                        </span>
+                    </div>
+                ) : null}
+            </div>
+        )}
+
+        {/* Text column */}
+        <div class:list={[
+            "flex flex-col p-6 md:p-8",
+            hasMockup ? "md:col-span-2" : "",
+        ]}>
+            {eyebrowT && (
+                <div class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-ink-muted">
+                    <span data-lang="en">{eyebrowT.en}</span>
+                    <span data-lang="de">{eyebrowT.de}</span>
+                </div>
+            )}
+            <h3 class="text-2xl md:text-3xl font-bold tracking-tightish leading-[1.1] text-ink">
+                <span data-lang="en">{titleT.en}</span>
+                <span data-lang="de">{titleT.de}</span>
+            </h3>
+            {descriptionT && (
+                <p class="mt-4 text-[15px] md:text-base text-ink-muted leading-relaxed">
+                    <span data-lang="en">{descriptionT.en}</span>
+                    <span data-lang="de">{descriptionT.de}</span>
+                </p>
+            )}
+            {hasActions && (
+                <div class="mt-10 md:mt-12 flex flex-wrap gap-3">
+                    {liveHref && (
+                        <a
+                            href={liveHref}
+                            target="_blank"
+                            rel="noopener"
+                            class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-surface hover:opacity-85 transition-opacity"
+                        >
+                            <span data-lang="en">{liveLabelT.en}</span>
+                            <span data-lang="de">{liveLabelT.de}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7" />
+                                <path d="M8 7h9v9" />
+                            </svg>
+                        </a>
+                    )}
+                    {githubHref && (
+                        <a
+                            href={githubHref}
+                            target="_blank"
+                            rel="noopener"
+                            class:list={[
+                                "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-85",
+                                liveHref
+                                    ? "border border-ink/15 text-ink hover:border-ink/40"
+                                    : "bg-ink text-surface",
+                            ]}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.26 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56 4.56-1.53 7.85-5.83 7.85-10.91C23.5 5.65 18.35.5 12 .5Z"/>
+                            </svg>
+                            <span data-lang="en">{githubLabelT.en}</span>
+                            <span data-lang="de">{githubLabelT.de}</span>
+                        </a>
+                    )}
+                </div>
+            )}
+        </div>
+    </div>
+</div>

@@ -30,6 +30,8 @@ const {
         <Footer />
 
         <script>
+            // === One-time setup (survives view transitions) ===
+
             // Clear hash on initial load so reload always lands at top.
             if (window.location.hash) {
                 history.replaceState(
@@ -41,6 +43,7 @@ const {
             }
 
             // Intercept in-page anchor clicks: smooth-scroll without updating URL.
+            // Delegated to document, so it works regardless of DOM swaps.
             document.addEventListener("click", (e) => {
                 const a = (e.target as Element)?.closest?.("a");
                 if (!a) return;
@@ -62,55 +65,219 @@ const {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
             });
 
-            const reduce = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
+            // === Per-page setup (re-runs after every view transition) ===
 
-            document.body.classList.add("js-ready");
+            const wireProjectGroup = (
+                group: HTMLElement,
+                signal: AbortSignal
+            ) => {
+                const tiles = group.querySelectorAll<HTMLElement>("[data-tile]");
+                const previews = group.querySelectorAll<HTMLElement>("[data-preview]");
+                let hideTimer: number | undefined;
 
-            if (!reduce && "IntersectionObserver" in window) {
-                const io = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("is-visible");
-                                io.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0, rootMargin: "0px 0px 120px 0px" }
-                );
-                document
-                    .querySelectorAll("[data-reveal]")
-                    .forEach((el) => io.observe(el));
-
-                const parallaxEls = Array.from(
-                    document.querySelectorAll("[data-parallax]")
-                ) as HTMLElement[];
-                let ticking = false;
-                const update = () => {
-                    const vh = window.innerHeight;
-                    parallaxEls.forEach((el) => {
-                        const rect = el.getBoundingClientRect();
-                        if (rect.bottom < -200 || rect.top > vh + 200) return;
-                        const center = rect.top + rect.height / 2;
-                        const distFromCenter = center - vh / 2;
-                        const speed =
-                            parseFloat(el.dataset.parallax || "0.06") || 0.06;
-                        el.style.transform = `translate3d(0, ${(-distFromCenter * speed).toFixed(2)}px, 0)`;
+                const show = (id: string) => {
+                    if (hideTimer) window.clearTimeout(hideTimer);
+                    group.dataset.active = id;
+                    previews.forEach((p) => {
+                        const match = p.dataset.preview === id;
+                        p.classList.toggle("is-active", match);
+                        p.setAttribute("aria-hidden", match ? "false" : "true");
                     });
-                    ticking = false;
                 };
-                const onScroll = () => {
-                    if (!ticking) {
-                        requestAnimationFrame(update);
-                        ticking = true;
-                    }
+                const scheduleHide = () => {
+                    if (hideTimer) window.clearTimeout(hideTimer);
+                    hideTimer = window.setTimeout(() => {
+                        delete group.dataset.active;
+                        previews.forEach((p) => {
+                            p.classList.remove("is-active");
+                            p.setAttribute("aria-hidden", "true");
+                        });
+                    }, 120);
                 };
-                window.addEventListener("scroll", onScroll, { passive: true });
-                window.addEventListener("resize", onScroll, { passive: true });
-                update();
-            }
+
+                tiles.forEach((t) => {
+                    const id = t.dataset.tile!;
+                    t.addEventListener("mouseenter", () => show(id), { signal });
+                    t.addEventListener("focus", () => show(id), { signal });
+                    t.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        show(id);
+                    }, { signal });
+                });
+                previews.forEach((p) => {
+                    const card = p.querySelector(".project-preview-card");
+                    if (!card) return;
+                    card.addEventListener("mouseenter", () => {
+                        if (hideTimer) window.clearTimeout(hideTimer);
+                    }, { signal });
+                    card.addEventListener("mouseleave", scheduleHide, { signal });
+                });
+                group.addEventListener("mouseleave", scheduleHide, { signal });
+                group.addEventListener("focusout", (e) => {
+                    const next = (e as FocusEvent).relatedTarget as Node | null;
+                    if (!next || !group.contains(next)) scheduleHide();
+                }, { signal });
+            };
+
+            let pageController: AbortController | null = null;
+            let pageObservers: IntersectionObserver[] = [];
+
+            const initPage = () => {
+                // Tear down previous page's listeners and observers.
+                if (pageController) pageController.abort();
+                pageObservers.forEach((o) => o.disconnect());
+                pageObservers = [];
+
+                pageController = new AbortController();
+                const signal = pageController.signal;
+
+                document.body.classList.add("js-ready");
+
+                const reduce = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
+
+                if (!reduce && "IntersectionObserver" in window) {
+                    const revealObserver = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("is-visible");
+                                    revealObserver.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0, rootMargin: "0px 0px 120px 0px" }
+                    );
+                    pageObservers.push(revealObserver);
+                    document
+                        .querySelectorAll("[data-reveal]")
+                        .forEach((el) => revealObserver.observe(el));
+
+                    const parallaxEls = Array.from(
+                        document.querySelectorAll("[data-parallax]")
+                    ) as HTMLElement[];
+                    let ticking = false;
+                    const update = () => {
+                        const vh = window.innerHeight;
+                        parallaxEls.forEach((el) => {
+                            const rect = el.getBoundingClientRect();
+                            if (rect.bottom < -200 || rect.top > vh + 200) return;
+                            const center = rect.top + rect.height / 2;
+                            const distFromCenter = center - vh / 2;
+                            const speed =
+                                parseFloat(el.dataset.parallax || "0.06") || 0.06;
+                            el.style.transform = `translate3d(0, ${(-distFromCenter * speed).toFixed(2)}px, 0)`;
+                        });
+                        ticking = false;
+                    };
+                    const onScroll = () => {
+                        if (!ticking) {
+                            requestAnimationFrame(update);
+                            ticking = true;
+                        }
+                    };
+                    window.addEventListener("scroll", onScroll, { passive: true, signal });
+                    window.addEventListener("resize", onScroll, { passive: true, signal });
+                    update();
+                }
+
+                document
+                    .querySelectorAll<HTMLElement>("[data-project-group]")
+                    .forEach((g) => wireProjectGroup(g, signal));
+
+                // Language toggle buttons.
+                document
+                    .querySelectorAll<HTMLButtonElement>("[data-lang-set]")
+                    .forEach((btn) => {
+                        btn.addEventListener(
+                            "click",
+                            () => {
+                                const lang = btn.dataset.langSet === "de" ? "de" : "en";
+                                try {
+                                    localStorage.setItem("lang", lang);
+                                } catch {
+                                    /* storage blocked — proceed anyway */
+                                }
+                                document.documentElement.setAttribute(
+                                    "data-lang",
+                                    lang
+                                );
+                                document.documentElement.setAttribute("lang", lang);
+                            },
+                            { signal }
+                        );
+                    });
+
+                // Scroll spy: highlight nav links based on which section the user
+                // has scrolled to. Falls back to the page's SSR-active link when
+                // no tracked section is in the active strip.
+                const navLinks = document.querySelectorAll<HTMLAnchorElement>(
+                    "[data-nav-id]"
+                );
+                const sectionToNav: Record<string, string> = {
+                    work: "work",
+                    "cv-snapshot": "cv",
+                    contact: "contact",
+                };
+                const trackedSections = Object.keys(sectionToNav)
+                    .map((id) => document.getElementById(id))
+                    .filter((el): el is HTMLElement => el !== null);
+
+                if (
+                    navLinks.length > 0 &&
+                    trackedSections.length > 0 &&
+                    "IntersectionObserver" in window
+                ) {
+                    const defaultActive =
+                        Array.from(navLinks).find((a) =>
+                            a.classList.contains("font-medium")
+                        )?.dataset.navId ?? null;
+
+                    const setActive = (navId: string | null) => {
+                        navLinks.forEach((a) => {
+                            const isActive = a.dataset.navId === navId;
+                            a.classList.toggle("text-ink", isActive);
+                            a.classList.toggle("font-medium", isActive);
+                            a.classList.toggle("text-ink-muted", !isActive);
+                        });
+                    };
+
+                    const navH =
+                        parseInt(
+                            getComputedStyle(document.documentElement)
+                                .getPropertyValue("--nav-h")
+                        ) || 56;
+                    const visible = new Set<string>();
+                    const spy = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((e) => {
+                                if (e.isIntersecting) visible.add(e.target.id);
+                                else visible.delete(e.target.id);
+                            });
+                            if (visible.size === 0) {
+                                setActive(defaultActive);
+                                return;
+                            }
+                            // Pick the last (most-recently-scrolled-into) tracked section.
+                            let last: string | null = null;
+                            trackedSections.forEach((s) => {
+                                if (visible.has(s.id)) last = s.id;
+                            });
+                            if (last) setActive(sectionToNav[last]);
+                        },
+                        {
+                            rootMargin: `-${navH}px 0px -55% 0px`,
+                            threshold: 0,
+                        }
+                    );
+                    trackedSections.forEach((s) => spy.observe(s));
+                    pageObservers.push(spy);
+                }
+            };
+
+            // astro:page-load fires on initial load AND after every view transition.
+            document.addEventListener("astro:page-load", initPage);
         </script>
     </body>
 </html>

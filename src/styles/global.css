@@ -35,7 +35,58 @@ h1, h2, h3, h4, h5 {
     letter-spacing: -0.022em;
 }
 
-/* Reveal-on-scroll — only hidden once JS confirms it's ready. */
+/* Hide scrollbar on the horizontal projects shelf. */
+.scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Auto-scrolling marquee for the projects shelf. */
+.marquee {
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0,
+        black 6%,
+        black 94%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0,
+        black 6%,
+        black 94%,
+        transparent
+    );
+}
+.marquee-track {
+    animation: marquee-scroll 55s linear infinite;
+}
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+    .marquee {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+
+/* Reveal-on-scroll*/
 body.js-ready [data-reveal]:not(.is-visible) {
     opacity: 0;
     transform: translate3d(0, 20px, 0);
@@ -70,4 +121,61 @@ body.js-ready [data-reveal]:not(.is-visible) {
 
 .time-line-container > div:last-child .education__time > .education__line {
     display: none;
+}
+
+/* i18n: show only the active language. Default to English when no lang attr set. */
+html[data-lang="en"] [data-lang="de"],
+html:not([data-lang]) [data-lang="de"] {
+    display: none;
+}
+html[data-lang="de"] [data-lang="en"] {
+    display: none;
+}
+
+/* Active language toggle button */
+html[data-lang="en"] .lang-btn[data-lang-set="en"],
+html[data-lang="de"] .lang-btn[data-lang-set="de"],
+html:not([data-lang]) .lang-btn[data-lang-set="en"] {
+    background-color: var(--ink);
+    color: var(--surface);
+}
+
+/* Project tile / preview interaction */
+.project-group .tiles-grid {
+    transition:
+        opacity 0.35s ease,
+        filter 0.35s ease;
+}
+.project-group[data-active] .tiles-grid {
+    opacity: 0.25;
+    filter: blur(3px);
+}
+
+.project-preview {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+    transition:
+        opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-preview .project-preview-card {
+    pointer-events: none;
+}
+.project-preview.is-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.project-preview.is-active .project-preview-card {
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-group .tiles-grid,
+    .project-preview {
+        transition: none;
+    }
+    .project-preview {
+        transform: none;
+    }
 }

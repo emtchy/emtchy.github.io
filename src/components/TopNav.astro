@@ -2,9 +2,15 @@
 const { activeNav } = Astro.props;
 
 const links = [
-    { id: "work", label: "Work", href: "/#work" },
-    { id: "cv", label: "CV", href: "/cv" },
-    { id: "contact", label: "Contact", href: "mailto:emily@gombocz.com" },
+    { id: "home", labelEn: "Home", labelDe: "Start", href: "/" },
+    { id: "work", labelEn: "Work", labelDe: "Arbeit", href: "/#work" },
+    { id: "cv", labelEn: "CV", labelDe: "Lebenslauf", href: "/cv" },
+    {
+        id: "contact",
+        labelEn: "Contact",
+        labelDe: "Kontakt",
+        href: "mailto:emily@gombocz.com",
+    },
 ];
 ---
 
@@ -35,10 +41,32 @@ const links = [
                                 : "text-ink-muted",
                         ]}
                     >
-                        {link.label}
+                        <span data-lang="en">{link.labelEn}</span>
+                        <span data-lang="de">{link.labelDe}</span>
                     </a>
                 ))
             }
+
+            <div
+                role="group"
+                aria-label="Language"
+                class="ml-2 flex items-center gap-1 rounded-full border border-ink/15 px-1 py-0.5 text-xs"
+            >
+                <button
+                    type="button"
+                    data-lang-set="en"
+                    class="lang-btn rounded-full px-2 py-0.5 text-ink-muted transition-colors hover:text-ink"
+                >
+                    EN
+                </button>
+                <button
+                    type="button"
+                    data-lang-set="de"
+                    class="lang-btn rounded-full px-2 py-0.5 text-ink-muted transition-colors hover:text-ink"
+                >
+                    DE
+                </button>
+            </div>
         </nav>
     </div>
 </header>

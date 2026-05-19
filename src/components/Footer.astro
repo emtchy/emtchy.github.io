@@ -1,13 +1,89 @@
 ---
-const today = new Date();
+const year = new Date().getFullYear();
 ---
 
-<footer class="mx-auto max-w-[1100px] px-6 py-12 text-center text-sm text-ink-muted">
-    <div class="pb-1">&copy; {today.getFullYear()} Emily Gombocz</div>
-    <div class="opacity-75">
-        Based on the Astrofy template by
-        <a href="https://manuelernestog.github.io" target="_blank" class="underline-offset-2 hover:underline">
-            Manuel Ernesto
-        </a>
+<footer class="bg-surface w-full border-t border-ink/10">
+    <div class="mx-auto max-w-[1100px] px-6 py-14">
+        <!-- Top: name / tagline + nav -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+                <div class="text-2xl font-semibold tracking-tightish text-ink">
+                    Emily Gombocz
+                </div>
+                <div class="mt-1 text-sm text-ink-muted">
+                    Software Engineering &amp; Management · TU Graz
+                </div>
+            </div>
+            <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                <a href="/" class="text-ink-muted hover:text-ink transition-colors">
+                    <span data-lang="en">Work</span>
+                    <span data-lang="de">Arbeit</span>
+                </a>
+                <a href="/cv" class="text-ink-muted hover:text-ink transition-colors">
+                    <span data-lang="en">CV</span>
+                    <span data-lang="de">Lebenslauf</span>
+                </a>
+                <a
+                    href="mailto:emily@gombocz.com"
+                    class="text-ink-muted hover:text-ink transition-colors"
+                >
+                    <span data-lang="en">Email</span>
+                    <span data-lang="de">E-Mail</span>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/emily-gombocz-1b28b5332/"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-ink-muted hover:text-ink transition-colors"
+                >
+                    LinkedIn
+                </a>
+                <a
+                    href="https://github.com/emtchy"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-ink-muted hover:text-ink transition-colors"
+                >
+                    GitHub
+                </a>
+            </nav>
+        </div>
+
+        <!-- Bottom: copyright + credit -->
+        <div
+            class="mt-10 pt-6 border-t border-ink/5 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-ink-muted"
+        >
+            <div>
+                <span data-lang="en">&copy; {year} Emily Gombocz · All rights reserved.</span>
+                <span data-lang="de">&copy; {year} Emily Gombocz · Alle Rechte vorbehalten.</span>
+            </div>
+            <div>
+                <span data-lang="en">Built with</span>
+                <span data-lang="de">Gebaut mit</span>
+                <a
+                    href="https://astro.build"
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-ink underline-offset-2 hover:underline"
+                >Astro</a>
+                &amp;
+                <a
+                    href="https://tailwindcss.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-ink underline-offset-2 hover:underline"
+                >Tailwind</a>.
+                <span data-lang="en">Based on the</span>
+                <span data-lang="de">Basierend auf dem</span>
+                <a
+                    href="https://manuelernestog.github.io"
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-ink underline-offset-2 hover:underline"
+                >Astrofy</a>
+                <span data-lang="en">template.</span>
+                <span data-lang="de">Template.</span>
+            </div>
+        </div>
     </div>
 </footer>

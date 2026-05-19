@@ -4,7 +4,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
 const skills = [
     {
-        group: "Programming",
+        group: { en: "Programming", de: "Programmierung" },
         items: [
             "C",
             "C++",
@@ -13,52 +13,77 @@ const skills = [
             "JavaScript",
             "TypeScript",
             "SystemVerilog",
+            "SQL",
             "RISC-V",
-            "Inline Assembly",
+            "Scala",
         ],
     },
     {
-        group: "Frameworks & Tools",
+        group: { en: "Frameworks & Tools", de: "Frameworks & Tools" },
         items: [
             "Astro",
             "Spring Boot",
             "Django",
             "Tailwind",
-            "Git / GitHub",
-            "GitLab",
+            "GitLab / GitHub",
             "Agile & Scrum",
+            "<TODO> flashcard tool frameworks",
         ],
     },
     {
-        group: "Design",
+        group: { en: "Design", de: "Design" },
         items: ["Figma", "Affinity Designer"],
     },
     {
-        group: "Operating Systems",
+        group: { en: "Operating Systems", de: "Betriebssysteme" },
         items: ["Linux / Unix", "macOS", "Windows"],
     },
     {
-        group: "Languages",
-        items: ["German (native)", "English (C1)"],
+        group: { en: "Languages", de: "Sprachen" },
+        items: [
+            { en: "German (native)", de: "Deutsch (Muttersprache)" },
+            { en: "English (C1)", de: "Englisch (C1)" },
+        ],
     },
 ];
 
 const coursework = [
     {
-        title: "Operating Systems",
-        body: "Built a simplified OS in C++ — user-space mutexes, thread management, shared memory, process handling.",
+        title: { en: "Operating Systems", de: "Betriebssysteme" },
+        body: {
+            en: "Built a simplified OS in C++: user-space mutexes, thread management, shared memory, process handling.",
+            de: "Ein vereinfachtes OS in C++ entwickelt: User-Space-Mutexe, Thread-Verwaltung, Shared Memory, Prozessverwaltung.",
+        },
     },
     {
-        title: "Object Oriented Programming 2",
-        body: "OpenStreetMap-based application in Java + Spring Boot, focused on clean architecture and OO design.",
+        title: {
+            en: "Object Oriented Programming 2",
+            de: "Objektorientierte Programmierung 2",
+        },
+        body: {
+            en: "OpenStreetMap-based application in Java + Spring Boot.",
+            de: "OpenStreetMap-basierte Anwendung in Java + Spring Boot.",
+        },
     },
     {
-        title: "Agile Software Development & Project Management",
-        body: "Team-based Scrum projects in Java and Angular — sprint planning, collaboration, and agile workflows.",
+        title: {
+            en: "Agile Software Development & Project Management",
+            de: "Agile Softwareentwicklung & Projektmanagement",
+        },
+        body: {
+            en: "Team-based Scrum projects in Java and Angular: sprint planning, collaboration, and agile workflows.",
+            de: "Team-Scrum-Projekte in Java und Angular: Sprint-Planung, Zusammenarbeit und agile Workflows.",
+        },
     },
     {
-        title: "Senior Software Development",
-        body: "Full-stack Django project; design patterns, testing strategy, and team leadership.",
+        title: {
+            en: "Senior Software Development",
+            de: "Senior Softwareentwicklung",
+        },
+        body: {
+            en: "Full-stack Django project: design patterns, testing strategy, and team leadership.",
+            de: "Full-Stack-Django-Projekt: Design Patterns, Teststrategie und Teamleitung.",
+        },
     },
 ];
 ---
@@ -68,35 +93,23 @@ const coursework = [
     <section class="bg-surface w-full">
         <div class="mx-auto max-w-[1100px] px-6 pt-20 pb-12">
             <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Curriculum Vitae
+                <span data-lang="en">Curriculum Vitae</span>
+                <span data-lang="de">Lebenslauf</span>
             </div>
             <h1 data-reveal data-reveal-delay="1" class="text-5xl md:text-6xl font-bold tracking-tightish leading-[1.05] text-ink">
                 Emily Gombocz.
             </h1>
             <p data-reveal data-reveal-delay="2" class="mt-6 max-w-2xl text-lg text-ink-muted leading-relaxed">
-                Software Engineering and Management student at TU Graz,
-                drawn to projects where careful engineering and
-                considered design meet. I started at university level
-                while still in secondary school, and have been chasing
-                problems that reward both rigor and taste ever since.
+                <span data-lang="en">TODO Software Engineering and Management student at TU Graz, drawn to projects where careful engineering and considered design meet. I started at university level while still in secondary school, and have been chasing problems that reward both rigor and taste ever since.</span>
+                <span data-lang="de">TODO Software-Engineering-and-Management-Studentin an der TU Graz, fasziniert von Projekten, in denen sorgfältige Technik und durchdachtes Design zusammenkommen. Ich habe noch während der Schulzeit auf Universitätsniveau zu studieren begonnen und beschäftige mich seitdem mit Problemen, die sowohl Sorgfalt als auch Geschmack belohnen.</span>
             </p>
             <div data-reveal data-reveal-delay="3" class="mt-8 flex gap-3 flex-wrap">
-                <a
-                    href="/emily-gombocz-cv.pdf"
-                    target="_blank"
-                    rel="noopener"
-                    class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-surface hover:opacity-85 transition-opacity"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                    </svg>
-                    Download CV (PDF)
-                </a>
                 <a
                     href="mailto:emily@gombocz.com"
                     class="inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
                 >
-                    Get in touch
+                    <span data-lang="en">Get in touch</span>
+                    <span data-lang="de">Kontakt aufnehmen</span>
                 </a>
             </div>
         </div>
@@ -106,23 +119,43 @@ const coursework = [
     <section class="bg-surface-alt w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-20">
             <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Education
+                <span data-lang="en">Education</span>
+                <span data-lang="de">Ausbildung</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                Where I've studied.
+                <span data-lang="en">Where I've studied.</span>
+                <span data-lang="de">Wo ich studiert habe.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
-                    title="Bachelor's Degree, Software Engineering and Management"
-                    subtitle="2023 — present · Graz University of Technology, Austria"
+                    title={{
+                        en: "Bachelor's Degree, Software Engineering and Management",
+                        de: "Bachelorstudium, Software Engineering and Management",
+                    }}
+                    subtitle={{
+                        en: "2023 to present · Graz University of Technology, Austria",
+                        de: "Seit 2023 · Technische Universität Graz, Österreich",
+                    }}
                 />
                 <TimeLineElement
-                    title="Exchange Semester"
-                    subtitle="2025 · Rhodes College, Memphis, TN, U.S."
+                    title={{
+                        en: "Exchange Semester",
+                        de: "Auslandssemester",
+                    }}
+                    subtitle={{
+                        en: "2025 · Rhodes College, Memphis, TN, U.S.",
+                        de: "2025 · Rhodes College, Memphis, TN, USA",
+                    }}
                 />
                 <TimeLineElement
-                    title="Middle School & High School"
-                    subtitle="2015 — 2023 · MS BG BRG Klusemannstrasse, Graz, Austria"
+                    title={{
+                        en: "Middle School & High School",
+                        de: "Mittel- und Oberstufe",
+                    }}
+                    subtitle={{
+                        en: "2015 to 2023 · MS BG BRG Klusemannstrasse, Graz, Austria",
+                        de: "2015 bis 2023 · MS BG BRG Klusemannstraße, Graz, Österreich",
+                    }}
                 />
             </div>
         </div>
@@ -132,35 +165,88 @@ const coursework = [
     <section class="bg-surface w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-20">
             <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Experience
+                <span data-lang="en">Experience</span>
+                <span data-lang="de">Berufserfahrung</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                Where I've worked.
+                <span data-lang="en">Where I've worked.</span>
+                <span data-lang="de">Wo ich gearbeitet habe.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
-                    title="Student Teaching Assistant"
-                    subtitle="Oct 2024 — Jun 2025 · TU Graz"
+                    title={{
+                        en: "Upcoming Software Engineering Intern",
+                        de: "Bevorstehendes Praktikum, Software Engineering",
+                    }}
+                    subtitle={{
+                        en: "Jul 2026 - Aug 2026 · Beyond Now GmbH",
+                        de: "Juli 2026 - Aug. 2026 · Beyond Now GmbH",
+                    }}
+                />
+                <TimeLineElement
+                    title={{
+                        en: "Student Teaching Assistant",
+                        de: "Studentische Tutorin",
+                    }}
+                    subtitle={{
+                        en: "Mar 2026 - Jun 2026 · TU Graz",
+                        de: "März 2026 - Juni 2026 · TU Graz",
+                    }}
                 >
-                    Mentored undergraduates in Introduction to Structured Programming and Project Management in Software Development — grading, tutorials, and one-on-one guidance.
+                    <span data-lang="en">Mentored undergraduates in Project Management in Software Development and Agile Software Development: grading, tutorials, workshops, and one-on-one guidance.</span>
+                    <span data-lang="de">Betreuung von Bachelor-Studierenden in den Lehrveranstaltungen Projektmanagement in der Softwareentwicklung und Agile Softwareentwicklung: Korrekturen, Tutorien, Workshops und individuelle Beratung.</span>
                 </TimeLineElement>
                 <TimeLineElement
-                    title="Data Quality Management"
-                    subtitle="Feb 2024 — Aug 2024 · Raiffeisenbank Kalsdorf-Lieboch-Stainz"
+                    title={{
+                        en: "Student Teaching Assistant",
+                        de: "Studentische Tutorin",
+                    }}
+                    subtitle={{
+                        en: "Oct 2024 - Jun 2025 · TU Graz",
+                        de: "Okt. 2024 - Juni 2025 · TU Graz",
+                    }}
                 >
-                    Maintained customer data and supported data-quality work for a regional bank, including upkeep of Lotus Notes databases.
+                    <span data-lang="en">Mentored undergraduates in Introduction to Structured Programming and Project Management in Software Development: grading, tutorials, and one-on-one guidance.</span>
+                    <span data-lang="de">Betreuung von Bachelor-Studierenden in Einführung in die strukturierte Programmierung und Projektmanagement in der Softwareentwicklung: Korrekturen, Tutorien und individuelle Beratung.</span>
                 </TimeLineElement>
                 <TimeLineElement
-                    title="Reception Employee"
-                    subtitle="Aug 2023 — Dec 2023 · FlibLab Center West, Graz"
+                    title={{
+                        en: "Data Quality Management",
+                        de: "Datenqualitäts-Management",
+                    }}
+                    subtitle={{
+                        en: "Feb 2024 - Aug 2024 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
+                        de: "Feb. 2024 - Aug. 2024 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
+                    }}
                 >
-                    Ran front-desk operations at a children's entertainment facility — bookings, payments, and customer inquiries.
+                    <span data-lang="en">Maintained customer data and supported data-quality work for a regional bank, including upkeep of Lotus Notes databases.</span>
+                    <span data-lang="de">Pflege der Kundendaten und Unterstützung der Datenqualitätsarbeit einer Regionalbank, inklusive Wartung der Lotus-Notes-Datenbanken.</span>
                 </TimeLineElement>
                 <TimeLineElement
-                    title="Intern · Raiffeisenbank"
-                    subtitle="July 2023 · Kalsdorf-Lieboch-Stainz, Austria"
+                    title={{
+                        en: "Reception Employee",
+                        de: "Rezeptionsmitarbeiterin",
+                    }}
+                    subtitle={{
+                        en: "Aug 2023 - Dec 2023 · FlibLab Center West, Graz",
+                        de: "Aug. 2023 - Dez. 2023 · FlibLab Center West, Graz",
+                    }}
                 >
-                    Supported marketing initiatives and back-office operations during a summer internship.
+                    <span data-lang="en">Ran front-desk operations at a children's entertainment facility: bookings, payments, and customer inquiries.</span>
+                    <span data-lang="de">Leitung des Empfangs in einer Kinder-Unterhaltungseinrichtung: Reservierungen, Zahlungen und Kundenanfragen.</span>
+                </TimeLineElement>
+                <TimeLineElement
+                    title={{
+                        en: "Intern · Raiffeisenbank",
+                        de: "Praktikantin · Raiffeisenbank",
+                    }}
+                    subtitle={{
+                        en: "July 2023 · Kalsdorf-Lieboch-Stainz, Austria",
+                        de: "Juli 2023 · Kalsdorf-Lieboch-Stainz, Österreich",
+                    }}
+                >
+                    <span data-lang="en">Supported marketing initiatives and back-office operations during a summer internship.</span>
+                    <span data-lang="de">Unterstützung von Marketing-Initiativen und Back-Office-Tätigkeiten im Rahmen eines Sommerpraktikums.</span>
                 </TimeLineElement>
             </div>
         </div>
@@ -170,20 +256,24 @@ const coursework = [
     <section class="bg-surface-alt w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-20">
             <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Coursework
+                <span data-lang="en">Coursework</span>
+                <span data-lang="de">Studieninhalte</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                A few favourites.
+                <span data-lang="en">A few favourites.</span>
+                <span data-lang="de">Ein paar Favoriten.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="grid gap-x-10 gap-y-6 md:grid-cols-2 max-w-4xl">
                 {
                     coursework.map((c) => (
                         <div>
                             <h3 class="text-base font-semibold text-ink">
-                                {c.title}
+                                <span data-lang="en">{c.title.en}</span>
+                                <span data-lang="de">{c.title.de}</span>
                             </h3>
                             <p class="mt-1 text-[15px] text-ink-muted leading-relaxed">
-                                {c.body}
+                                <span data-lang="en">{c.body.en}</span>
+                                <span data-lang="de">{c.body.de}</span>
                             </p>
                         </div>
                     ))
@@ -196,35 +286,55 @@ const coursework = [
     <section class="bg-surface w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-20">
             <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Recognition
+                <span data-lang="en">Recognition</span>
+                <span data-lang="de">Auszeichnungen</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                Scholarships & honours.
+                <span data-lang="en">Scholarships & honours.</span>
+                <span data-lang="de">Stipendien & Auszeichnungen.</span>
             </h2>
             <ul data-reveal data-reveal-delay="2" class="grid gap-3 max-w-3xl text-[15px] text-ink-muted leading-relaxed">
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
-                    <span>TU Graz 100 merit scholarship · 2023</span>
+                    <span>
+                        <span data-lang="en">Dean's List: top 5% of second-year Software Engineering &amp; Management · 2024/25</span>
+                        <span data-lang="de">Dean's List: Top 5% des zweiten Studienjahres Software Engineering &amp; Management · 2024/25</span>
+                    </span>
                 </li>
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
-                    <span>CSBME faculty scholarship for academic excellence · 2023/24</span>
-                </li>
-                <li class="flex gap-3">
-                                    <span class="text-ink">·</span>
-                                    <span>CSBME faculty scholarship for academic excellence · 2024/25</span>
-                                </li>
-                <li class="flex gap-3">
-                    <span class="text-ink">·</span>
-                    <span>AVL List scholarship for studying abroad · 2025</span>
+                    <span>
+                        <span data-lang="en">Dean's List: top 10% of first-year Software Engineering &amp; Management · 2023/24</span>
+                        <span data-lang="de">Dean's List: Top 10% des ersten Studienjahres Software Engineering &amp; Management · 2023/24</span>
+                    </span>
                 </li>
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
-                    <span>Dean's List: top 10% of first-year Software Engineering &amp; Management · 2023/24</span>
+                    <span>
+                        <span data-lang="en">TU Graz 100 merit-based scholarship · 8000€ · 2023</span>
+                        <span data-lang="de">TU Graz 100 Leistungsstipendium · 8000 € · 2023</span>
+                    </span>
                 </li>
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
-                    <span>Dean's List: top 5% of second-year Software Engineering &amp; Management · 2024/25</span>
+                    <span>
+                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 750€ · 2023/24</span>
+                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 750 € · 2023/24</span>
+                    </span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>
+                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 1200€ · 2024/25</span>
+                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 1200 € · 2024/25</span>
+                    </span>
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-ink">·</span>
+                    <span>
+                        <span data-lang="en">AVL List scholarship for studying abroad · 3000€ · 2025</span>
+                        <span data-lang="de">AVL-List-Stipendium für Auslandsstudien · 3000 € · 2025</span>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -234,22 +344,32 @@ const coursework = [
     <section class="bg-surface-alt w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-20">
             <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
-                Skills
+                <span data-lang="en">Skills</span>
+                <span data-lang="de">Skills</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                Tools of the trade.
+                <span data-lang="en">Tools of the trade.</span>
+                <span data-lang="de">Werkzeuge des Handwerks.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="grid gap-10 max-w-4xl">
                 {
                     skills.map((group) => (
                         <div>
                             <div class="text-sm font-medium uppercase tracking-[0.08em] text-ink-muted mb-3">
-                                {group.group}
+                                <span data-lang="en">{group.group.en}</span>
+                                <span data-lang="de">{group.group.de}</span>
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 {group.items.map((item) => (
                                     <span class="rounded-full border border-ink/10 bg-surface px-3.5 py-1.5 text-sm text-ink">
-                                        {item}
+                                        {typeof item === "string" ? (
+                                            item
+                                        ) : (
+                                            <>
+                                                <span data-lang="en">{item.en}</span>
+                                                <span data-lang="de">{item.de}</span>
+                                            </>
+                                        )}
                                     </span>
                                 ))}
                             </div>
@@ -264,10 +384,18 @@ const coursework = [
     <section class="bg-surface w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-16 text-center">
             <p data-reveal class="text-ink-muted text-[15px]">
-                Want the rest? See
-                <a href="/" class="text-accent hover:underline">the work</a>
-                or
-                <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">say hello</a>.
+                <span data-lang="en">
+                    Want the rest? See
+                    <a href="/" class="text-accent hover:underline">the work</a>
+                    or
+                    <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">say hello</a>.
+                </span>
+                <span data-lang="de">
+                    Mehr? Sieh dir
+                    <a href="/" class="text-accent hover:underline">die Projekte</a>
+                    an oder
+                    <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">melde dich</a>.
+                </span>
             </p>
         </div>
     </section>

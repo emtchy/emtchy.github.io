@@ -1,5 +1,11 @@
 ---
 const { title, subtitle } = Astro.props;
+const titleEn = typeof title === "string" ? title : title?.en;
+const titleDe = typeof title === "string" ? title : title?.de ?? title?.en;
+const subtitleEn =
+    typeof subtitle === "string" ? subtitle : subtitle?.en;
+const subtitleDe =
+    typeof subtitle === "string" ? subtitle : subtitle?.de ?? subtitle?.en;
 ---
 
 <div class="relative pl-6 pb-8 last:pb-0">
@@ -11,8 +17,16 @@ const { title, subtitle } = Astro.props;
         class="education__line absolute left-[3.5px] top-4 bottom-0 w-px bg-ink/10"
         aria-hidden="true"
     ></span>
-    <h3 class="text-base font-semibold text-ink leading-snug">{title}</h3>
-    <div class="mt-1 text-sm text-ink-muted">{subtitle}</div>
+    <h3 class="text-base font-semibold text-ink leading-snug">
+        <span data-lang="en">{titleEn}</span>
+        <span data-lang="de">{titleDe}</span>
+    </h3>
+    {subtitleEn && (
+        <div class="mt-1 text-sm text-ink-muted">
+            <span data-lang="en">{subtitleEn}</span>
+            <span data-lang="de">{subtitleDe}</span>
+        </div>
+    )}
     <div class="mt-2 text-[15px] text-ink-muted leading-relaxed">
         <slot />
     </div>
