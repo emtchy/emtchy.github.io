@@ -94,22 +94,40 @@ const coursework = [
         <div class="mx-auto max-w-[1100px] px-6 pt-20 pb-12">
             <div data-reveal class="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
                 <span data-lang="en">Curriculum Vitae</span>
-                <span data-lang="de">Lebenslauf</span>
+                <span data-lang="de">Curriculum Vitae</span>
             </div>
             <h1 data-reveal data-reveal-delay="1" class="text-5xl md:text-6xl font-bold tracking-tightish leading-[1.05] text-ink">
-                Emily Gombocz.
+                Emily Gombocz
             </h1>
             <p data-reveal data-reveal-delay="2" class="mt-6 max-w-2xl text-lg text-ink-muted leading-relaxed">
-                <span data-lang="en">TODO Software Engineering and Management student at TU Graz, drawn to projects where careful engineering and considered design meet. I started at university level while still in secondary school, and have been chasing problems that reward both rigor and taste ever since.</span>
-                <span data-lang="de">TODO Software-Engineering-and-Management-Studentin an der TU Graz, fasziniert von Projekten, in denen sorgfältige Technik und durchdachtes Design zusammenkommen. Ich habe noch während der Schulzeit auf Universitätsniveau zu studieren begonnen und beschäftige mich seitdem mit Problemen, die sowohl Sorgfalt als auch Geschmack belohnen.</span>
+                <span data-lang="en">Software Engineering & Management student at TU Graz, drawn to projects where careful engineering and considered design meet. I love turning rough ideas into things that work — and tend to bring the same care to the team behind them. Two years as a Teaching Assistant, multiple merit-based scholarships, and a semester in Memphis along the way.</span>
+                <span data-lang="de">Studentin Software Engineering & Management an der TU Graz, fasziniert von Projekten, in denen sorgfältige Technik und durchdachtes Design zusammenkommen. Ich liebe es, aus rohen Ideen funktionierende Dinge zu machen – und bringe die gleiche Sorgfalt für das Team mit, das dahintersteht. Zwei Jahre als studentische Tutorin, mehrere leistungsbasierte Stipendien und ein Auslandssemester in Memphis inklusive.</span>
             </p>
-            <div data-reveal data-reveal-delay="3" class="mt-8 flex gap-3 flex-wrap">
+            <div
+                data-reveal
+                data-reveal-delay="3"
+                class="mt-6 flex items-start gap-3 text-base text-ink-muted leading-relaxed max-w-2xl"
+            >
+                <span
+                    class="mt-[0.55rem] inline-block h-2 w-2 shrink-0 rounded-full bg-accent"
+                    aria-hidden="true"
+                ></span>
+                <p>
+                    <span class="font-semibold text-ink">
+                        <span data-lang="en">Currently:</span>
+                        <span data-lang="de">Aktuell:</span>
+                    </span>
+                    <span data-lang="en">In the final year of my Bachelor of Science degree in Software Engineering and Management in Graz, Austria.</span>
+                    <span data-lang="de">In den letzten Zügen meines Bachelor of Science in Software Engineering & Management in Graz, Österreich.</span>
+                </p>
+            </div>
+            <div data-reveal data-reveal-delay="4" class="mt-8 flex gap-3 flex-wrap">
                 <a
                     href="mailto:emily@gombocz.com"
-                    class="inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-medium text-ink hover:border-ink/40 transition-colors"
+                    class="inline-flex items-center rounded-full border border-accent px-6 py-3 text-sm font-medium text-accent hover:bg-accent/10 transition-colors"
                 >
                     <span data-lang="en">Get in touch</span>
-                    <span data-lang="de">Kontakt aufnehmen</span>
+                    <span data-lang="de">Kontaktieren</span>
                 </a>
             </div>
         </div>
@@ -124,7 +142,7 @@ const coursework = [
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
                 <span data-lang="en">Where I've studied.</span>
-                <span data-lang="de">Wo ich studiert habe.</span>
+                <span data-lang="de">Akademischer Werdegang.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
@@ -133,8 +151,8 @@ const coursework = [
                         de: "Bachelorstudium, Software Engineering and Management",
                     }}
                     subtitle={{
-                        en: "2023 to present · Graz University of Technology, Austria",
-                        de: "Seit 2023 · Technische Universität Graz, Österreich",
+                        en: "2023 to present · Graz University of Technology, Graz, Austria",
+                        de: "Seit 2023 · Technische Universität Graz, Graz, Österreich",
                     }}
                 />
                 <TimeLineElement
@@ -170,7 +188,7 @@ const coursework = [
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
                 <span data-lang="en">Where I've worked.</span>
-                <span data-lang="de">Wo ich gearbeitet habe.</span>
+                <span data-lang="de">Arbeitserfahrung.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
@@ -207,7 +225,7 @@ const coursework = [
                     }}
                 >
                     <span data-lang="en">Mentored undergraduates in Introduction to Structured Programming and Project Management in Software Development: grading, tutorials, and one-on-one guidance.</span>
-                    <span data-lang="de">Betreuung von Bachelor-Studierenden in Einführung in die strukturierte Programmierung und Projektmanagement in der Softwareentwicklung: Korrekturen, Tutorien und individuelle Beratung.</span>
+                    <span data-lang="de">Betreuung von Bachelor-Studierenden in Einführung in die strukturierte Programmierung und Projektmanagement in der Softwareentwicklung: Klausur-Korrekturen, Tutorien und Abhaltung von Fragestunden.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -220,7 +238,7 @@ const coursework = [
                     }}
                 >
                     <span data-lang="en">Maintained customer data and supported data-quality work for a regional bank, including upkeep of Lotus Notes databases.</span>
-                    <span data-lang="de">Pflege der Kundendaten und Unterstützung der Datenqualitätsarbeit einer Regionalbank, inklusive Wartung der Lotus-Notes-Datenbanken.</span>
+                    <span data-lang="de">Wartung der Kundendaten und Unterstützung der Datenqualitätsarbeit einer Raiffeisenbank.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -228,12 +246,12 @@ const coursework = [
                         de: "Rezeptionsmitarbeiterin",
                     }}
                     subtitle={{
-                        en: "Aug 2023 - Dec 2023 · FlibLab Center West, Graz",
-                        de: "Aug. 2023 - Dez. 2023 · FlibLab Center West, Graz",
+                        en: "Aug 2023 - Dec 2023 · FlibLab Center West GmbH",
+                        de: "Aug. 2023 - Dez. 2023 · FlibLab Center West GmbH",
                     }}
                 >
                     <span data-lang="en">Ran front-desk operations at a children's entertainment facility: bookings, payments, and customer inquiries.</span>
-                    <span data-lang="de">Leitung des Empfangs in einer Kinder-Unterhaltungseinrichtung: Reservierungen, Zahlungen und Kundenanfragen.</span>
+                    <span data-lang="de">Empfangsbetreuung einer Kinder-Unterhaltungseinrichtung: Reservierungen, Zahlungen & Kundenanfragen und Sonderevents wie Geburtstage.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -241,8 +259,8 @@ const coursework = [
                         de: "Praktikantin · Raiffeisenbank",
                     }}
                     subtitle={{
-                        en: "July 2023 · Kalsdorf-Lieboch-Stainz, Austria",
-                        de: "Juli 2023 · Kalsdorf-Lieboch-Stainz, Österreich",
+                        en: "July 2023 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
+                        de: "Juli 2023 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
                     }}
                 >
                     <span data-lang="en">Supported marketing initiatives and back-office operations during a summer internship.</span>
@@ -260,8 +278,8 @@ const coursework = [
                 <span data-lang="de">Studieninhalte</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                <span data-lang="en">A few favourites.</span>
-                <span data-lang="de">Ein paar Favoriten.</span>
+                <span data-lang="en">Selected Coursework favourites.</span>
+                <span data-lang="de">Ausgewählte Kursprojekte</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="grid gap-x-10 gap-y-6 md:grid-cols-2 max-w-4xl">
                 {
@@ -318,15 +336,15 @@ const coursework = [
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
                     <span>
-                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 750€ · 2023/24</span>
-                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 750 € · 2023/24</span>
+                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 1200€ · 2024/25</span>
+                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 1200 € · 2024/25</span>
                     </span>
                 </li>
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
                     <span>
-                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 1200€ · 2024/25</span>
-                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 1200 € · 2024/25</span>
+                        <span data-lang="en">CSBME faculty scholarship for academic excellence · 750€ · 2023/24</span>
+                        <span data-lang="de">CSBME-Fakultätsstipendium für akademische Exzellenz · 750 € · 2023/24</span>
                     </span>
                 </li>
                 <li class="flex gap-3">
@@ -348,8 +366,8 @@ const coursework = [
                 <span data-lang="de">Skills</span>
             </div>
             <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
-                <span data-lang="en">Tools of the trade.</span>
-                <span data-lang="de">Werkzeuge des Handwerks.</span>
+                <span data-lang="en">Tools I use.</span>
+                <span data-lang="de">Frameworks, Tools & Skills.</span>
             </h2>
             <div data-reveal data-reveal-delay="2" class="grid gap-10 max-w-4xl">
                 {
@@ -380,8 +398,74 @@ const coursework = [
         </div>
     </section>
 
-    <!-- FOOTER LINK -->
+    <!-- SOFT SKILLS -->
     <section class="bg-surface w-full">
+        <div class="mx-auto max-w-[1100px] px-6 py-20">
+            <div data-reveal class="mb-2 text-sm font-medium uppercase tracking-[0.12em] text-ink-muted">
+                <span data-lang="en">Soft skills</span>
+                <span data-lang="de">Soft Skills</span>
+            </div>
+            <h2 data-reveal data-reveal-delay="1" class="text-3xl md:text-4xl font-bold tracking-tightish text-ink mb-10">
+                <span data-lang="en">How I work.</span>
+                <span data-lang="de">Wie ich arbeite.</span>
+            </h2>
+            <div data-reveal data-reveal-delay="2" class="grid gap-5 md:grid-cols-2 max-w-4xl">
+                <div class="soft-skill-card rounded-2xl border border-ink/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-18px_rgba(139,126,200,0.45)]">
+                    <h3 class="text-base font-semibold text-ink">
+                        <span data-lang="en">Disciplined work ethic</span>
+                        <span data-lang="de">Disziplinierte Arbeitsweise</span>
+                    </h3>
+                    <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
+                        <span data-lang="en">Two years as a Teaching Assistant taught me to plan carefully and follow through, even with parallel deadlines.</span>
+                        <span data-lang="de">Zwei Jahre als studentische Tutorin haben mich gelehrt, vorausschauend zu planen und parallel laufende Deadlines zuverlässig einzuhalten.</span>
+                    </p>
+                </div>
+                <div class="soft-skill-card rounded-2xl border border-ink/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-18px_rgba(139,126,200,0.45)]">
+                    <h3 class="text-base font-semibold text-ink">
+                        <span data-lang="en">Fast learning</span>
+                        <span data-lang="de">Schnelles Lernen</span>
+                    </h3>
+                    <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
+                        <span data-lang="en">Started university-level coursework in secondary school; comfortable picking up new languages, tools, and conventions quickly.</span>
+                        <span data-lang="de">Schon in der Schulzeit auf Universitätsniveau studiert; neue Sprachen, Werkzeuge und Konventionen eigne ich mir schnell an.</span>
+                    </p>
+                </div>
+                <div class="soft-skill-card rounded-2xl border border-ink/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-18px_rgba(139,126,200,0.45)]">
+                    <h3 class="text-base font-semibold text-ink">
+                        <span data-lang="en">Team-oriented thinking</span>
+                        <span data-lang="de">Teamorientiertes Denken</span>
+                    </h3>
+                    <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
+                        <span data-lang="en">At my best with a team. Scrum-based coursework and mentoring student teams have shaped how I collaborate.</span>
+                        <span data-lang="de">Am stärksten im Team. Scrum-basierte Lehrveranstaltungen und die Betreuung studentischer Teams haben meinen Kollaborationsstil geprägt.</span>
+                    </p>
+                </div>
+                <div class="soft-skill-card rounded-2xl border border-ink/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-18px_rgba(139,126,200,0.45)]">
+                    <h3 class="text-base font-semibold text-ink">
+                        <span data-lang="en">Creative problem-solving</span>
+                        <span data-lang="de">Kreatives Problemlösen</span>
+                    </h3>
+                    <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
+                        <span data-lang="en">I look for the cleaner path, not the obvious one — whether that's an algorithm, a workflow, or a UI.</span>
+                        <span data-lang="de">Ich suche den klareren Weg, nicht den naheliegenden – sei es bei einem Algorithmus, einem Workflow oder einer Benutzeroberfläche.</span>
+                    </p>
+                </div>
+                <div class="soft-skill-card rounded-2xl border border-ink/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-18px_rgba(139,126,200,0.45)]">
+                    <h3 class="text-base font-semibold text-ink">
+                        <span data-lang="en">Cross-cultural communication</span>
+                        <span data-lang="de">Interkulturelle Kommunikation</span>
+                    </h3>
+                    <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
+                        <span data-lang="en">An exchange semester at Rhodes College, Memphis, taught me to bridge different working styles and perspectives.</span>
+                        <span data-lang="de">Ein Auslandssemester am Rhodes College in Memphis hat mir gezeigt, wie man unterschiedliche Arbeitsstile und Perspektiven verbindet.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER LINK -->
+    <section class="bg-surface-alt w-full">
         <div class="mx-auto max-w-[1100px] px-6 py-16 text-center">
             <p data-reveal class="text-ink-muted text-[15px]">
                 <span data-lang="en">
@@ -391,10 +475,10 @@ const coursework = [
                     <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">say hello</a>.
                 </span>
                 <span data-lang="de">
-                    Mehr? Sieh dir
+                    Schau dir gerne
                     <a href="/" class="text-accent hover:underline">die Projekte</a>
                     an oder
-                    <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">melde dich</a>.
+                    <a href="mailto:emily@gombocz.com" class="text-accent hover:underline">melde dich bei mir</a>.
                 </span>
             </p>
         </div>

@@ -8,7 +8,7 @@ export const personalRows = [
                     en: "Flashcard tool",
                     de: "Karteikarten-Tool",
                 },
-                image: "/flashcard-tool_landingpage.png",
+                image: "/flashcard-tool/flashcard-tool_landingpage.png",
                 imageAlt: "Flashcard tool landing page",
             },
             preview: {
