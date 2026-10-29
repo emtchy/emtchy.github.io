@@ -6,27 +6,42 @@ const skills = [
     {
         group: { en: "Programming", de: "Programmierung" },
         items: [
-            "C",
-            "C++",
             "Java",
             "Python",
+            "C",
+            "C++",
             "JavaScript",
             "TypeScript",
-            "SystemVerilog",
             "SQL",
+            "R",
+            "SAS",
+            "SystemVerilog",
             "RISC-V",
             "Scala",
             "Prolog"
         ],
     },
     {
+        group: { en: "AI & Data", de: "KI & Daten" },
+        items: [
+            { en: "Local LLMs (deployment, prompting, evaluation)", de: "Lokale LLMs (Deployment, Prompting, Evaluation)" },
+            { en: "Prompt & rubric optimisation", de: "Prompt- & Rubrik-Optimierung" },
+            { en: "Data mining", de: "Data Mining" },
+            { en: "Gene expression analysis", de: "Genexpressionsanalyse" },
+        ],
+    },
+    {
         group: { en: "Frameworks & Tools", de: "Frameworks & Tools" },
         items: [
-            "Astro",
             "Spring Boot",
             "Django",
+            "Astro",
             "Tailwind",
-            "GitLab / GitHub",
+            "Git (GitHub, GitLab, Bitbucket)",
+            "Docker",
+            "AWS",
+            "Argo CD",
+            "Tilt",
             "Agile & Scrum",
         ],
     },
@@ -100,8 +115,8 @@ const coursework = [
                 Emily Gombocz
             </h1>
             <p data-reveal data-reveal-delay="2" class="mt-6 max-w-2xl text-lg text-ink-muted leading-relaxed">
-                <span data-lang="en">Software Engineering & Management student at TU Graz, drawn to projects where careful engineering and considered design meet. I love turning rough ideas into things that work — and tend to bring the same care to the team behind them. Two years as a Teaching Assistant, multiple merit-based scholarships, and a semester in Memphis along the way.</span>
-                <span data-lang="de">Studentin Software Engineering & Management an der TU Graz, fasziniert von Projekten, in denen sorgfältige Technik und durchdachtes Design zusammenkommen. Ich liebe es, aus neuen Ideen funktionierende Projekte entstehen zu lassen – und bringe die gleiche Sorgfalt für das Team mit, das dahintersteht. Zwei Jahre als studentische Tutorin, mehrere leistungsbasierte Stipendien und ein Auslandssemester in Memphis inklusive.</span>
+                <span data-lang="en">I studied Software Engineering and Management at TU Graz and now study Medical Informatics at MedUni Vienna and TU Wien. Next to my studies I work as an AI engineer at agilion, building a documentation assistant for care workers that keeps personal data on the customer's server. My bachelor's thesis, a grading tool built on small local language models, was accepted as a conference paper.</span>
+                <span data-lang="de">Ich habe Software Engineering and Management an der TU Graz studiert und studiere jetzt Medizinische Informatik an der MedUni Wien und der TU Wien. Nebenbei arbeite ich als AI Engineer bei agilion und baue einen Dokumentationsassistenten für Betreuer:innen, der personenbezogene Daten auf dem Server der Kund:innen lässt. Meine Bachelorarbeit, ein Bewertungstool auf Basis kleiner, lokaler Sprachmodelle, wurde als Konferenzpaper angenommen.</span>
             </p>
             <div
                 data-reveal
@@ -117,8 +132,8 @@ const coursework = [
                         <span data-lang="en">Currently:</span>
                         <span data-lang="de">Aktuell:</span>
                     </span>
-                    <span data-lang="en">In the final year of my Bachelor of Science degree in Software Engineering and Management in Graz, Austria.</span>
-                    <span data-lang="de">In den letzten Zügen meines Bachelor of Science in Software Engineering & Management in Graz, Österreich.</span>
+                    <span data-lang="en">First semester of the Medical Informatics MSc in Vienna, working as an AI engineer at agilion. I'll present my thesis at ICERI in November.</span>
+                    <span data-lang="de">Erstes Semester im Master Medizinische Informatik in Wien, daneben AI Engineer bei agilion. Im November präsentiere ich meine Arbeit bei der ICERI.</span>
                 </p>
             </div>
             <div data-reveal data-reveal-delay="4" class="mt-8 flex gap-3 flex-wrap">
@@ -147,22 +162,38 @@ const coursework = [
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
                     title={{
-                        en: "Bachelor's Degree, Software Engineering and Management",
-                        de: "Bachelorstudium, Software Engineering and Management",
+                        en: "MSc Medical Informatics",
+                        de: "Masterstudium Medizinische Informatik",
                     }}
                     subtitle={{
-                        en: "2023 to present · Graz University of Technology, Graz, Austria",
-                        de: "Seit 2023 · Technische Universität Graz, Graz, Österreich",
+                        en: "Oct 2026 to present · Medical University of Vienna & TU Wien",
+                        de: "Seit Okt. 2026 · Medizinische Universität Wien & TU Wien",
                     }}
-                />
+                >
+                    <span data-lang="en">A joint programme taught at both universities. My first project is in bioinformatics: why do most HLA-B27 carriers never develop ankylosing spondylitis? I analyse public gene expression data in R.</span>
+                    <span data-lang="de">Ein gemeinsames Studium an beiden Universitäten. Mein erstes Projekt liegt in der Bioinformatik: Warum erkranken die meisten HLA-B27-Träger:innen nie an Morbus Bechterew? Ich analysiere öffentliche Genexpressionsdaten in R.</span>
+                </TimeLineElement>
+                <TimeLineElement
+                    title={{
+                        en: "BSc Software Engineering and Management",
+                        de: "Bachelorstudium Software Engineering and Management",
+                    }}
+                    subtitle={{
+                        en: "Oct 2023 - Jun 2026 · Graz University of Technology, Graz, Austria",
+                        de: "Okt. 2023 - Juni 2026 · Technische Universität Graz, Graz, Österreich",
+                    }}
+                >
+                    <span data-lang="en">Finished in the standard six semesters. My thesis, "Fairer, Faster Feedback: Rubric-Based Grading of Text Submissions with Small, Local Large Language Models", was accepted at ICERI 2026. I compared prompting strategies and built a prompt refiner loop, so student data can stay at the university.</span>
+                    <span data-lang="de">In der Regelstudienzeit von sechs Semestern abgeschlossen. Meine Arbeit "Fairer, Faster Feedback: Rubric-Based Grading of Text Submissions with Small, Local Large Language Models" wurde für die ICERI 2026 angenommen. Ich habe Prompting-Strategien verglichen und eine Prompt-Refiner-Schleife gebaut, damit Studierendendaten an der Universität bleiben können.</span>
+                </TimeLineElement>
                 <TimeLineElement
                     title={{
                         en: "Exchange Semester",
                         de: "Auslandssemester",
                     }}
                     subtitle={{
-                        en: "2025 · Rhodes College, Memphis, TN, U.S.",
-                        de: "2025 · Rhodes College, Memphis, TN, USA",
+                        en: "Aug 2025 - Dec 2025 · Rhodes College, Memphis, TN, U.S.",
+                        de: "Aug. 2025 - Dez. 2025 · Rhodes College, Memphis, TN, USA",
                     }}
                 />
                 <TimeLineElement
@@ -171,7 +202,7 @@ const coursework = [
                         de: "Mittel- und Oberstufe",
                     }}
                     subtitle={{
-                        en: "2015 to 2023 · MS BG BRG Klusemannstrasse, Graz, Austria",
+                        en: "2015 to 2023 · MS BG/BRG Klusemannstraße, Graz, Austria · Matura average 1.14",
                         de: "2015 bis 2023 · MS BG BRG Klusemannstraße, Graz, Österreich",
                     }}
                 />
@@ -193,14 +224,30 @@ const coursework = [
             <div data-reveal data-reveal-delay="2" class="max-w-3xl">
                 <TimeLineElement
                     title={{
-                        en: "Upcoming Software Engineering Intern",
-                        de: "Bevorstehendes Praktikum, Software Engineering",
+                        en: "AI Engineer",
+                        de: "AI Engineer",
                     }}
                     subtitle={{
-                        en: "Jul 2026 - Aug 2026 · Beyond Now GmbH",
-                        de: "Juli 2026 - Aug. 2026 · Beyond Now GmbH",
+                        en: "Oct 2026 to present · agilion GmbH, Stainz",
+                        de: "Seit Okt. 2026 · agilion GmbH, Stainz",
                     }}
-                />
+                >
+                    <span data-lang="en">Designing and building an AI assistant for care workers in disability and youth welfare from scratch. It becomes part of our care software and keeps personal data on the customer's server.</span>
+                    <span data-lang="de">Ich konzipiere und baue von Grund auf einen KI-Assistenten für Betreuer:innen in der Behinderten- und Jugendhilfe. Er wird Teil unserer Betreuungssoftware und lässt personenbezogene Daten auf dem Server der Kund:innen.</span>
+                </TimeLineElement>
+                <TimeLineElement
+                    title={{
+                        en: "Software Engineering Intern",
+                        de: "Praktikum Software Engineering",
+                    }}
+                    subtitle={{
+                        en: "Jul 2026 - Aug 2026 · Beyond Now GmbH, Graz",
+                        de: "Juli 2026 - Aug. 2026 · Beyond Now GmbH, Graz",
+                    }}
+                >
+                    <span data-lang="en">Wrote customer-specific Java extensions for their telecom BSS platform. I worked as a full member of a Scrum team, from refinement to code review and delivery.</span>
+                    <span data-lang="de">Kundenspezifische Java-Erweiterungen für die BSS-Plattform im Telekom-Bereich entwickelt. Ich war vollwertiges Mitglied eines Scrum-Teams, von der Refinement-Runde bis zu Code Review und Auslieferung.</span>
+                </TimeLineElement>
                 <TimeLineElement
                     title={{
                         en: "Student Teaching Assistant",
@@ -211,8 +258,8 @@ const coursework = [
                         de: "März 2026 - Juni 2026 · TU Graz",
                     }}
                 >
-                    <span data-lang="en">Mentored undergraduates in Project Management in Software Development and Agile Software Development: grading, tutorials, workshops, and one-on-one guidance.</span>
-                    <span data-lang="de">Betreuung von Bachelor-Studierenden in den Lehrveranstaltungen Projektmanagement in der Softwareentwicklung und Agile Softwareentwicklung: Korrekturen, Tutorien, Workshops und individuelle Beratung.</span>
+                    <span data-lang="en">Agile Software Development and Project Management, 200+ students each. I led tutorials, graded assignments and coached student Scrum teams.</span>
+                    <span data-lang="de">Agile Softwareentwicklung und Projektmanagement, jeweils über 200 Studierende. Ich habe Tutorien geleitet, Abgaben korrigiert und studentische Scrum-Teams betreut.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -224,8 +271,21 @@ const coursework = [
                         de: "Okt. 2024 - Juni 2025 · TU Graz",
                     }}
                 >
-                    <span data-lang="en">Mentored undergraduates in Introduction to Structured Programming and Project Management in Software Development: grading, tutorials, and one-on-one guidance.</span>
-                    <span data-lang="de">Betreuung von Bachelor-Studierenden in Einführung in die strukturierte Programmierung und Projektmanagement in der Softwareentwicklung: Klausur-Korrekturen, Tutorien und Abhaltung von Fragestunden.</span>
+                    <span data-lang="en">Introduction to Structured Programming and Project Management, 200+ students each. I held office hours and exercise sessions and helped with grading.</span>
+                    <span data-lang="de">Einführung in die strukturierte Programmierung und Projektmanagement, jeweils über 200 Studierende. Ich habe Fragestunden und Übungen gehalten und bei der Korrektur geholfen.</span>
+                </TimeLineElement>
+                <TimeLineElement
+                    title={{
+                        en: "Software testing & documentation",
+                        de: "Software-Testing & Dokumentation",
+                    }}
+                    subtitle={{
+                        en: "Aug 2025 - Feb 2026 · agilion GmbH, Stainz",
+                        de: "Aug. 2025 - Feb. 2026 · agilion GmbH, Stainz",
+                    }}
+                >
+                    <span data-lang="en">Helped with day-to-day testing, and wrote and proof-read documentation.</span>
+                    <span data-lang="de">Unterstützung beim täglichen Testen sowie beim Schreiben und Korrekturlesen von Dokumentation.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -237,8 +297,8 @@ const coursework = [
                         de: "Feb. 2024 - Aug. 2024 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
                     }}
                 >
-                    <span data-lang="en">Maintained customer data and supported data-quality work for a regional bank, including upkeep of Lotus Notes databases.</span>
-                    <span data-lang="de">Wartung der Kundendaten und Unterstützung der Datenqualitätsarbeit einer Raiffeisenbank.</span>
+                    <span data-lang="en">Maintained and checked customer data at a regional bank.</span>
+                    <span data-lang="de">Pflege und Prüfung von Kundendaten bei einer Regionalbank.</span>
                 </TimeLineElement>
                 <TimeLineElement
                     title={{
@@ -250,7 +310,7 @@ const coursework = [
                         de: "Aug. 2023 - Dez. 2023 · FlibLab Center West GmbH",
                     }}
                 >
-                    <span data-lang="en">Ran front-desk operations at a children's entertainment facility: bookings, payments, and customer inquiries.</span>
+                    <span data-lang="en">Front desk at a children's entertainment centre: bookings, payments and customer questions.</span>
                     <span data-lang="de">Empfangsbetreuung einer Kinder-Unterhaltungseinrichtung: Reservierungen, Zahlungen & Kundenanfragen und Sonderevents wie Geburtstage.</span>
                 </TimeLineElement>
                 <TimeLineElement
@@ -263,7 +323,7 @@ const coursework = [
                         de: "Juli 2023 · Raiffeisenbank Kalsdorf-Lieboch-Stainz",
                     }}
                 >
-                    <span data-lang="en">Supported marketing initiatives and back-office operations during a summer internship.</span>
+                    <span data-lang="en">Summer internship in marketing and back office.</span>
                     <span data-lang="de">Unterstützung von Marketing-Initiativen und Back-Office-Tätigkeiten im Rahmen eines Sommerpraktikums.</span>
                 </TimeLineElement>
             </div>
@@ -350,8 +410,8 @@ const coursework = [
                 <li class="flex gap-3">
                     <span class="text-ink">·</span>
                     <span>
-                        <span data-lang="en">AVL List scholarship for studying abroad · 3000€ · 2025</span>
-                        <span data-lang="de">AVL-List-Stipendium für Auslandsstudien · 3000 € · 2025</span>
+                        <span data-lang="en">AVL List scholarship for studying abroad · 2000€ · 2025</span>
+                        <span data-lang="de">AVL-List-Stipendium für Auslandsstudien · 2000 € · 2025</span>
                     </span>
                 </li>
             </ul>
@@ -416,7 +476,7 @@ const coursework = [
                         <span data-lang="de">Disziplinierte Arbeitsweise</span>
                     </h3>
                     <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
-                        <span data-lang="en">Two years as a Teaching Assistant taught me to plan carefully and follow through, even with parallel deadlines.</span>
+                        <span data-lang="en">Two years as a teaching assistant taught me to plan ahead and to keep several deadlines on track.</span>
                         <span data-lang="de">Zwei Jahre als studentische Tutorin haben mich gelehrt, vorausschauend zu planen und parallel laufende Deadlines zuverlässig einzuhalten.</span>
                     </p>
                 </div>
@@ -426,7 +486,7 @@ const coursework = [
                         <span data-lang="de">Schnelles Lernen</span>
                     </h3>
                     <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
-                        <span data-lang="en">Started university-level coursework in secondary school; comfortable picking up new languages, tools, and conventions quickly.</span>
+                        <span data-lang="en">I started university-level coursework while still at school, and I pick up new languages and tools quickly.</span>
                         <span data-lang="de">Schon in der Schulzeit auf Universitätsniveau studiert; neue Sprachen, Werkzeuge und Konventionen eigne ich mir schnell an.</span>
                     </p>
                 </div>
@@ -436,7 +496,7 @@ const coursework = [
                         <span data-lang="de">Teamorientiertes Denken</span>
                     </h3>
                     <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
-                        <span data-lang="en">At my best with a team. Scrum-based coursework and mentoring student teams have shaped how I collaborate.</span>
+                        <span data-lang="en">I work best in a team. Scrum projects and coaching student teams shaped how I collaborate.</span>
                         <span data-lang="de">Am stärksten im Team. Scrum-basierte Lehrveranstaltungen und die Betreuung studentischer Teams haben meinen Kollaborationsstil geprägt.</span>
                     </p>
                 </div>
@@ -446,7 +506,7 @@ const coursework = [
                         <span data-lang="de">Kreatives Problemlösen</span>
                     </h3>
                     <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
-                        <span data-lang="en">I look for the cleaner path, not the obvious one — whether that's an algorithm, a workflow, or a UI.</span>
+                        <span data-lang="en">I like looking for a cleaner solution, whether it's an algorithm, a workflow or a UI.</span>
                         <span data-lang="de">Ich suche den klareren Weg, nicht den naheliegenden – sei es bei einem Algorithmus, einem Workflow oder einer Benutzeroberfläche.</span>
                     </p>
                 </div>
@@ -456,7 +516,7 @@ const coursework = [
                         <span data-lang="de">Interkulturelle Kommunikation</span>
                     </h3>
                     <p class="mt-2 text-[15px] text-ink-muted leading-relaxed">
-                        <span data-lang="en">An exchange semester at Rhodes College, Memphis, taught me to bridge different working styles and perspectives.</span>
+                        <span data-lang="en">My semester at Rhodes College in Memphis taught me to work with people who think and work differently.</span>
                         <span data-lang="de">Ein Auslandssemester am Rhodes College in Memphis hat mir gezeigt, wie man unterschiedliche Arbeitsstile und Perspektiven verbindet.</span>
                     </p>
                 </div>
